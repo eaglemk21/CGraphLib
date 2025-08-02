@@ -1,0 +1,15 @@
+# Step 1: Compile source files into object files
+gcc -c src/graph.c -Iinclude -o src/graph.o
+gcc -c src/algorithms.c -Iinclude -o src/algorithms.o
+
+# Step 2: Create the static library
+ar rcs lib/libgraph.a src/algorithms.o src/graph.o 
+
+# Step 3: Compile the main program
+gcc -c examples/main.c -Iinclude -o examples/main.o
+
+# Step 4: Link everything to create the final executable
+gcc -o myprogram examples/main.o -Llib -lgraph
+
+# Step 5: Run the Executable
+./myprogram
